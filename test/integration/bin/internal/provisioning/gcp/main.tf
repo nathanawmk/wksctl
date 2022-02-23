@@ -22,7 +22,7 @@ resource "google_compute_instance" "tf_test_vm" {
 
   boot_disk {
     initialize_params {
-        image = "${var.gcp_image}"
+      image = "${var.gcp_image}"
     }
   }
 
@@ -60,6 +60,9 @@ resource "google_compute_instance" "tf_test_vm" {
   }
 
   depends_on = ["google_compute_firewall.fw-allow-ping-and-ssh"]
+  labels = {
+    yor_trace = "441fc714-446f-44e7-9a68-2c3097bbefd7"
+  }
 }
 
 resource "google_compute_firewall" "fw-allow-ping-and-ssh" {
